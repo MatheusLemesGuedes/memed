@@ -13,6 +13,8 @@
         max-height: 700px;
       }
     </style>
+  </head>
+  <body>
     <script
     src="https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js"
     data-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WzQ4MzQyLCJlNjZkNTc0YWJiNDQ3NTcxMTMwZTkyMGVlNTI2NWMxYSIsIjIwMjMtMDUtMTUiLCJzaW5hcHNlLnByZXNjcmljYW8iLCJwYXJ0bmVyLjMuNDM2MTciXQ.6BDCu1666bqvLRDo1I3vgVTiqJojSwiixCzyXc_Z4YA"
@@ -28,29 +30,6 @@
         });
       }
     });
-    </script>
-  </head>
-  <body>
-    <script>
-      function initMemed () {
-  var script = document.createElement('script');
-
-  script.dataset.color = 'COR_PRIMARIA_EM_HEXADECIMAL';
-  script.dataset.token = 'TOKEN_DO_USUARIO_OBTIDO';
-
-  script.src = 'https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js';
-
-  // Aguarde o carregamento do Sinapse Prescrição
-  // para poder utilizar o `MdSinapsePrescricao` disponível globalmente via `window`
-  script.addEventListener('load', function () {
-    // Exemplo de implementação: https://github.com/MemedDev/example-integration-php/blob/master/src/js/main.js
-  });
-
-  document.body.appendChild(script);
-}
-
-// Chame a função "initMemed()" para injetar o Sinapse Prescrição
-initMemed();
     </script>
     <div id="minhaDiv">
       <h1>Memed</h1>
