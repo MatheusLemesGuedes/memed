@@ -16,6 +16,7 @@
         max-height: 700px;
       }
     </style>
+    
   </head>
   <body>
     <script
@@ -27,6 +28,17 @@
     const iframe = document.getElementById('frame');
     // const inputInsideIframe = iframe.contentDocument.getElementById('input');
     // inputInsideIframe.focus();
+    const apiKey = 'iJGiB4kjDGOLeDFPWMG3no9VnN7Abpqe3w1jEFm6olkhkZD6oSfSmYCm';
+    const secretKey = 'Xe8M5GvBGCr4FStKfxXKisRo3SfYKI7KrTMkJpCAstzu2yXVN4av5nmL';
+
+    fetch('https://api.example.com/endpoint?api_key=' + apiKey + '&secret_key=' + secretKey)
+    .then(response => {
+    // Manipule a resposta da API aqui
+    })
+    .catch(error => {
+    // Lida com erros de conexão ou resposta
+    });
+
     </script>
     <div id="minhaDiv">
       <iframe
