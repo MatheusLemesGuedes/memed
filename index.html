@@ -24,11 +24,15 @@
     data-color="#000000"
     data-container="minhaDiv"
     >
+    const iframe = document.getElementById('frame');
+    const inputInsideIframe = iframe.contentDocument.getElementById('input');
+    inputInsideIframe.focus();
     </script>
     <div id="minhaDiv">
       <iframe
-      src="https://integrations.bridge.memed.com.br?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WzQ4MzQyLCJlNjZkNTc0YWJiNDQ3NTcxMTMwZTkyMGVlNTI2NWMxYSIsIjIwMjMtMDUtMTUiLCJzaW5hcHNlLnByZXNjcmljYW8iLCJwYXJ0bmVyLjMuNDM2MTciXQ.6BDCu1666bqvLRDo1I3vgVTiqJojSwiixCzyXc_Z4YA&url=https://integrations.memed.com.br&attendance=01&type=drugs&color=red"
+      id="frame" src="https://integrations.bridge.memed.com.br?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WzQ4MzQyLCJlNjZkNTc0YWJiNDQ3NTcxMTMwZTkyMGVlNTI2NWMxYSIsIjIwMjMtMDUtMTUiLCJzaW5hcHNlLnByZXNjcmljYW8iLCJwYXJ0bmVyLjMuNDM2MTciXQ.6BDCu1666bqvLRDo1I3vgVTiqJojSwiixCzyXc_Z4YA&url=https://integrations.memed.com.br&attendance=01&type=drugs&color=red"
       >
+      <input id="input" type="text">
       <h1>Memed</h1>
       <p>Teste Memed</p>
     </div>
