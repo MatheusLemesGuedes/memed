@@ -15,21 +15,26 @@
     </style>
   </head>
   <body>
-    <script
-    src="https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js"
-    data-token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WzQ4MzQyLCJlNjZkNTc0YWJiNDQ3NTcxMTMwZTkyMGVlNTI2NWMxYSIsIjIwMjMtMDUtMTUiLCJzaW5hcHNlLnByZXNjcmljYW8iLCJwYXJ0bmVyLjMuNDM2MTciXQ.6BDCu1666bqvLRDo1I3vgVTiqJojSwiixCzyXc_Z4YA"
-    data-color="#000000"
-    data-container="minhaDiv"
-    >
-    MdSinapsePrescricao.event.add('core:moduleInit', function moduleInitHandler(module) {
-  // O módulo da prescrição foi iniciado,
-    if (module.name === 'plataforma.prescricao') {
-    document.getElementById('btnShowPrescription').addEventListener('click', function () {
-      // Exibe o módulo de prescrição
-      MdHub.module.show('plataforma.prescricao');
-        });
-      }
-    });
+    <script>
+      function initMemed () {
+        var script = document.createElement('script');
+
+        script.dataset.color = 'lightgray';
+        script.dataset.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WzQ4MzQyLCJlNjZkNTc0YWJiNDQ3NTcxMTMwZTkyMGVlNTI2NWMxYSIsIjIwMjMtMDUtMTUiLCJzaW5hcHNlLnByZXNjcmljYW8iLCJwYXJ0bmVyLjMuNDM2MTciXQ.6BDCu1666bqvLRDo1I3vgVTiqJojSwiixCzyXc_Z4YA';
+
+        script.src = 'https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js';
+
+  // Aguarde o carregamento do Sinapse Prescrição
+  // para poder utilizar o `MdSinapsePrescricao` disponível globalmente via `window`
+        script.addEventListener('load', function () {
+    // Exemplo de implementação: https://github.com/MemedDev/example-integration-php/blob/master/src/js/main.js
+  });
+
+  document.body.appendChild(script);
+}
+
+// Chame a função "initMemed()" para injetar o Sinapse Prescrição
+initMemed();
     </script>
     <div id="minhaDiv">
       <h1>Memed</h1>
