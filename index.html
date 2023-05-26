@@ -13,28 +13,70 @@
         max-height: 700px;
       }
     </style>
+    <script
+    src="https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js"
+    data-token="TOKEN_DO_USUARIO_OBTIDO_NO_CADASTRO_VIA_API_REST"
+    data-color="COR_PRIMARIA_EM_HEXADECIMAL"
+    data-container="minhaDiv"
+></script>
   </head>
   <body>
     <script>
-      function initMemed () {
-        var script = document.createElement('script');
+      MdSinapsePrescricao.event.add('core:moduleInit', function moduleInitHandler(module) {
+  // O módulo da prescrição foi iniciado
+  if (module.name === 'plataforma.prescricao') {
+    // Registrando o evento de click no elemento
+    document.getElementById('botaoShowPrescricao').addEventListener('click', function () {
+      MdHub.command
+        .send('plataforma.prescricao', 'setPaciente', {
+          // Pode ser um documento criptografado do paciente, por exemplo
+          // Usamos essa propriedade para destinguir nomes iguais
+          // (obrigatório)
+          idExterno: 'some_encoded_data_or_hash_or_id',
 
-        script.dataset.color = 'lightgray';
-        script.dataset.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.WzQ4MzQyLCJlNjZkNTc0YWJiNDQ3NTcxMTMwZTkyMGVlNTI2NWMxYSIsIjIwMjMtMDUtMTUiLCJzaW5hcHNlLnByZXNjcmljYW8iLCJwYXJ0bmVyLjMuNDM2MTciXQ.6BDCu1666bqvLRDo1I3vgVTiqJojSwiixCzyXc_Z4YA';
+          // Nome do paciente (obrigatório)
+          nome: 'José da Silva',
 
-        script.src = 'https://integrations.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js';
+          // CPF do paciente (obrigatório, caso o paciente não possua cpf, utilizar a tag withoutCpf: true,)
+          cpf: '99999999999',
 
-  // Aguarde o carregamento do Sinapse Prescrição
-  // para poder utilizar o `MdSinapsePrescricao` disponível globalmente via `window`
-        script.addEventListener('load', function () {
-    // Exemplo de implementação: https://github.com/MemedDev/example-integration-php/blob/master/src/js/main.js
-  });
+          // Data de nascimento (opcional)
+          data_nascimento: '10/10/2010',
 
-  document.body.appendChild(script);
-}
+          // Nome social do paciente (opcional)
+          nome_social: 'Maria da Silva',
 
-// Chame a função "initMemed()" para injetar o Sinapse Prescrição
-initMemed();
+          // Endereço do paciente (opcional)
+          endereco: 'Rua da Saúde, 123',
+
+          // Cidade do paciente (opcional)
+          cidade: 'São Paulo',
+
+          // Telefone celular (obrigatório, DDD + digitos, somente números. NÃO ENVIAR PREFIXO "+55")
+          telefone: '11999999999',
+
+          // Usado no receituário de alto custo (Opcional)
+          peso: 75,
+
+          // Usado no receituário de alto custo (Opcional)
+          altura: 1.8,
+
+          // Usado no receituário de alto custo (Opcional)
+          nome_mae: 'Nome da mãe',
+
+          // Usado no receituário de alto custo (Opcional)
+          dificuldade_locomocao: true,
+          
+          // Categorias que podem apresentar restrição de itens prescritos (para gerar Alerta de Condição)
+          categoriesConditions: [1],
+        })
+        .then(function () {
+          // Mostra o módulo de prescrição
+          MdHub.module.show('plataforma.prescricao');
+        });
+    });
+  }
+});
     </script>
     <div id="minhaDiv">
       <h1>Memed</h1>
